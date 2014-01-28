@@ -1,0 +1,41 @@
+.fleft {
+    float: left;
+}
+
+.fright {
+    float: right;
+}
+.fclear{
+    clear: both;
+}
+.button_like{
+    color: #fff!important;
+    background: #77ca1b url("/assets/images/environment/default/layout/forms/default-soft-button.png") repeat-x left bottom;
+    text-shadow: #529029 0 1px 0!important;
+    border-bottom: 1px solid #356616;
+    border-top: 1px solid #88d554;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 5px;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+
+    display: inline-block;
+
+    text-decoration: none;
+}
+
+.button_like:hover{
+    -moz-box-shadow: 0px 0px 4px #444;
+    -webkit-box-shadow: 0px 0px 4px #444;
+    box-shadow: 0px 0px 4px #444;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#444444')";
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=0, Color='#444444');
+    text-decoration: none;
+}
+
+.billys_options{
+    width: 343px;
+}
