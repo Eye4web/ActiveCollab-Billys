@@ -48,6 +48,7 @@ class BillysRequest
      * @return object
      */
 
+    /*
     static public function sendV1($method, $url, $body = null)
     {
         $billysConfig = ConfigOptions::getValue(array(
@@ -78,41 +79,9 @@ class BillysRequest
             'body' => $body
         );
     }
-
+*/
     static public function setIssued(Invoice $invoice, User $user)
     {
-
-        /**
-         * @var InvoiceItems $items
-         * @var InvoiceItem $item
-         */
-
-        $items = $invoice->getItems();
-        $invoiceLines = array();
-
-        foreach ($items as $item) {
-            $invoiceLines[] = array(
-                'productId' => $item->getId(),
-                'description' => $item->getDescription(),
-                'quantity' => $item->getQuantity(),
-                'unitPrice' => $item->getUnitCost(),
-            );
-        }
-
-        $requestBody = array(
-            'invoice' => array(
-                'invoiceNo' => $invoice->getId(),
-                'contactId' => $invoice->getRecipientId(),
-                'entryDate' => $invoice->getIssuedOn()->format('Y-m-d'),
-                'dueDate' => $invoice->getDueOn()->format('Y-m-d'),
-                'currencyId' => $invoice->getCurrencyId(),
-                'lines' => $invoiceLines
-            )
-        );
-
-        $response = self::send('POST', '/invoices', $requestBody);
-        $jsonResponse = json_encode($response);
-        error_log($jsonResponse);
 
     }
 

@@ -83,15 +83,15 @@ class BillysModule extends AngieModule
      * Add the custom fields required for this module
      */
     function createCustomOptions()
-    {
-        ConfigOptions::addOption('billys_billing_api_key');
-        ConfigOptions::addOption('billys_billing_secret');
-        ConfigOptions::addOption('billys_billing_email');
-        ConfigOptions::addOption('billys_billing_password');
-        ConfigOptions::addOption('billys_billing_user_id');
-        ConfigOptions::addOption('billys_billing_job_type_seller_accountId');
-        ConfigOptions::addOption('billys_billing_job_type_seller_organizationId');
-    }
+{
+    ConfigOptions::addOption('billys_billing_api_key');
+    ConfigOptions::addOption('billys_billing_secret');
+    ConfigOptions::addOption('billys_billing_email');
+    ConfigOptions::addOption('billys_billing_password');
+    ConfigOptions::addOption('billys_billing_user_id');
+    ConfigOptions::addOption('billys_billing_job_type_seller_accountId');
+    ConfigOptions::addOption('billys_billing_job_type_seller_organizationId');
+}
 
     /**
      * Creating the Billi's Billings invoices table.

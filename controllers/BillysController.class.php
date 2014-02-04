@@ -173,8 +173,7 @@ class BillysController extends \AdminController
             $contacts = array_column($contacts, 'contactId', 'company_id');
         }
 
-
-        /**
+       /**
          * @var Companies $companies
          * @var Company $company
          */
@@ -200,19 +199,22 @@ class BillysController extends \AdminController
                     );
 
                     if (isset($receivedContacts[$company_name])) { //if this company already is associated to a Billy's Billing contact, then simply update the Billy's Billing contact with the company information
-                        $response = BillysRequest::send('PUT', '/contacts/' . $contacts[$company_id], array('contact' => $contact));
+
+                        $response = BillysRequest::send('PUT', '/contacts/' . $receivedContacts[$company_name]->id, array('contact' => $contact));
                         unset($receivedContacts[$company_name]); //releasing the received contact after updating. This way, after the end of this loop, if there are any contacts from Billy's Billings that are not in our system we'll store them
                     } else {
                         $response = BillysRequest::send('POST', '/contacts', array('contact' => $contact));
                     }
 
                     $response_contact = $response->body->contacts[0];
-                    $contact['contactId'] = $response_contact->id;
-                    $synchronized_contacts[] = $contact;
-                    $contact = new BillysContact($response_contact->contactNo);
-                    $contact->setContactId($response_contact->id);
-                    $contact->setCountryId($response_contact->countryId);
-                    $contact->save();
+                    if ($response_contact) {
+                        $contact['contactId'] = $response_contact->id;
+                        $synchronized_contacts[] = $contact;
+                        $contact = new BillysContact($response_contact->contactNo);
+                        $contact->setContactId($response_contact->id);
+                        $contact->setCountryId($response_contact->countryId);
+                        $contact->save();
+                    }
                 } else {
                     if (isset($receivedContacts[$company_name])) { // if the company is inactive remove it from the received companies array, so that the next operations will not be made on it
                         unset($receivedContacts[$company_name]);
